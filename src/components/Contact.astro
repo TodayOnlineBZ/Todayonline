@@ -1,0 +1,33 @@
+---
+import { getContent } from "../data/cms.js";
+const { settings } = await getContent();
+import Footer from "./Footer.astro";
+---
+<section id="contact" class="on-brand sheet contact" data-sec>
+  <div class="wrap sec" style="padding-bottom:clamp(48px,6vw,80px)">
+    <p class="mono chap" style="margin-bottom:24px"><i></i>06 / Van jouw idee naar een eerste gesprek</p>
+    <h2>Vertel me wat je voor je ziet.</h2>
+    <div class="cgrid">
+      <div class="cdirect">
+        <p class="lede">Een idee, een schets of alleen een gevoel. Dat is genoeg om te beginnen. Mail of bel me, dan plannen we een eerste gesprek.</p>
+        <div style="display:grid;gap:14px">
+          <div class="copyrow"><a class="val" href={`mailto:${settings.email}`}>{settings.email}</a><button class="cbtn" type="button" data-copy={settings.email}>Kopieer</button></div>
+          <div class="copyrow"><a class="val" href={`tel:${settings.phone.replace(/\s/g, "")}`}>{settings.phone}</a><button class="cbtn" type="button" data-copy={settings.phone}>Kopieer</button></div>
+        </div>
+        <p class="muted">Afspreken kan bij jou, telefonisch of in Amsterdam.</p>
+      </div>
+      <form class="cform" id="cform" data-to={settings.formEmail} novalidate>
+        <h3>Deel je idee</h3>
+        <p class="fnote"><b>Zo werkt het</b><span>Je bericht opent in je eigen mailprogramma. Daar verstuur je het.</span></p>
+        <div class="frow">
+          <div class="fld"><label for="f-naam">Naam</label><input id="f-naam" type="text" autocomplete="name" required aria-describedby="e-naam"><p class="err" id="e-naam" aria-live="polite"></p></div>
+          <div class="fld"><label for="f-mail">E-mailadres</label><input id="f-mail" type="email" autocomplete="email" required aria-describedby="e-mail"><p class="err" id="e-mail" aria-live="polite"></p></div>
+        </div>
+        <div class="fld"><label for="f-idee">Wat zie je voor je?</label><p class="hint" id="h-idee">Een paar zinnen over je bedrijf en je wensen is genoeg.</p><textarea id="f-idee" required aria-describedby="h-idee e-idee"></textarea><p class="err" id="e-idee" aria-live="polite"></p></div>
+        <div class="actions"><button class="btn btn-primary" type="submit">Open in mijn mail <span class="arr" aria-hidden="true">→</span></button></div>
+        <div id="fresult" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+  <Footer />
+</section>

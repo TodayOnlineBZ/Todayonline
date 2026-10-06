@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+import bart from "../assets/bart.jpg";
+---
+<section id="bart" data-sec>
+  <div class="wrap sec" style="padding-top:0">
+    <div class="bart">
+      <figure class="bart-fig" data-rv>
+        <div class="ticks"><div class="frame" style="--r:1/1;--op:40% 20%"><Image src={bart} alt="Bart Ziemerink" widths={[480,960]} sizes="(max-width:900px) 360px, 480px" data-px="0.07" /></div></div>
+        <figcaption class="fig-cap mono"><span>Bart Ziemerink</span><span>Amsterdam</span></figcaption>
+      </figure>
+      <div class="bart-txt">
+        <p class="mono chap"><i></i>05 / De persoon achter TodayOnline</p>
+        <h2 data-rv>Groot denken. Direct schakelen.</h2>
+        <div class="prose" data-rv style="--d:.1s">
+          <p>Ik ben Bart Ziemerink. Bij TodayOnline schakel je rechtstreeks met mij, van het eerste gesprek tot de livegang en ook daarna.</p>
+          <p>Korte lijnen dus. Je legt je verhaal één keer uit en daarna ken ik het. Heb je een vraag of een nieuw idee? Dan bel of mail je gewoon.</p>
+          <p>Met de nieuwste AI-technieken kan ik groter denken en meer maken dan ik alleen ooit kon. Het vakwerk blijft van mij: ik bepaal de richting, maak de keuzes en bewaak de kwaliteit.</p>
+          <p>Ik kom uit Twente en werk nu vanuit Amsterdam.</p>
+        </div>
+        <dl class="facts" data-rv style="--d:.2s">
+          <div><dt class="mono">Standplaats</dt><dd>Amsterdam</dd></div>
+          <div><dt class="mono">Actief sinds</dt><dd>2019</dd></div>
+          <div><dt class="mono">Gemaakt</dt><dd>25+ websites en webshops</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>

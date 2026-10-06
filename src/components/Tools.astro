@@ -1,0 +1,24 @@
+---
+import { getContent } from "../data/cms.js";
+const { tools } = await getContent();
+---
+<section id="tools" data-sec>
+  <div class="wrap sec" style="padding-top:0">
+    <div class="shead">
+      <p class="mono chap"><i></i>04 / De tools achter het werk</p>
+      <h2 data-rv>Slimme tools. Sterk werk.</h2>
+      <p class="lede" data-rv style="--d:.08s">Ik combineer moderne design-, development- en AI-tools om jouw ideeën sneller tot leven te brengen.</p>
+    </div>
+    <ul class="tools" data-rv>
+      {tools.map((t, i) => (
+        <li>
+          <button class="tool" type="button" aria-describedby={`tip${i}`}>
+            <span class="tool-logo" role="img" aria-label={t.name} style={`width:${t.width}px;aspect-ratio:${t.ratio};-webkit-mask-image:url(${t.file});mask-image:url(${t.file})`}></span>
+            <span class="tip" role="tooltip" id={`tip${i}`}><b>{t.name}</b> — {t.use}</span>
+          </button>
+        </li>
+      ))}
+    </ul>
+    <p class="mono" style="margin-top:18px">Tools waarmee ik werk. Geen partnerships of certificeringen. Wijs of tik een logo aan voor de toepassing.</p>
+  </div>
+</section>

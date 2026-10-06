@@ -1,0 +1,18 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.png";
+---
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="logo" href="/" data-go="top" aria-label="TodayOnline, naar boven"><Image src={logo} alt="TodayOnline" widths={[240,480]} sizes="120px" loading="eager" /></a>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu openen"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Hoofdnavigatie">
+      <a class="nl" href="/#idee" data-go="idee">Jouw idee</a>
+      <a class="nl" href="/#werkwijze" data-go="werkwijze">Werkwijze</a>
+      <a class="nl" href="/#werk" data-go="werk">Werk</a>
+      <a class="nl" href="/#bart" data-go="bart">Over Bart</a>
+      <a class="btn btn-primary" href="/#contact" data-go="contact">Bespreek je project <span class="arr" aria-hidden="true">→</span></a>
+    </nav>
+  </div>
+  <div class="prog" id="prog" aria-hidden="true"></div>
+</header>

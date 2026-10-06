@@ -1,0 +1,9 @@
+# Oude WordPress-adressen naar de nieuwe onepager (Cloudflare Pages)
+/websites   /   301
+/websites/* /   301
+/werk       /   301
+/werk/*     /   301
+/over       /   301
+/over/*     /   301
+/contact    /   301
+/contact/*  /   301

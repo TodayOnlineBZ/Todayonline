@@ -1,0 +1,52 @@
+---
+import { Picture } from "astro:assets";
+import { getContent } from "../data/cms.js";
+/* Elke screenshot in src/assets/work/ wordt automatisch gekoppeld op bestandsnaam */
+const shots = import.meta.glob("../assets/work/*.{jpg,jpeg,png,webp}", { eager: true });
+const { projects } = await getContent();
+---
+<section id="werk" data-sec>
+  <div class="wrap sec">
+    <div class="shead">
+      <p class="mono chap"><i></i>03 / Het resultaat in beeld</p>
+      <h2>Websites die zo zijn ontstaan.</h2>
+      <p class="lede">Vijf websites die zo zijn gemaakt. Bekijk ze hier of open de echte website.</p>
+    </div>
+    <ul class="work" id="work">
+      {projects.map((p) => {
+        const local = shots[`../assets/work/${p.slug}-desktop.jpg`]?.default;
+        const has = p.shot || local;
+        return (
+          <li data-rv>
+            <article class="wk">
+              <div class="browser" data-prev>
+                <div class="bbar"><i><b></b></i><span class="url">{p.host}</span>{has && <span class="st" aria-hidden="true">scrolt</span>}</div>
+                <div class="bview">
+                  {p.shot ? (
+                    <>
+                      <img src={`${p.shot.url}?w=1200&auto=format&q=82`} srcset={[700, 1200, 1700].map((w) => `${p.shot.url}?w=${w}&auto=format&q=82 ${w}w`).join(", ")} sizes="(max-width:700px) 100vw, (max-width:1300px) 50vw, 1200px" width={p.shot.w} height={p.shot.h} alt={`Screenshot van de website ${p.host}`} loading="lazy" decoding="async" />
+                      <span class="rail" aria-hidden="true"><b></b></span>
+                    </>
+                  ) : local ? (
+                    <>
+                      <Picture src={local} alt={`Screenshot van de website ${p.host}`} widths={[700, 1200, 1700]} sizes="(max-width:700px) 100vw, (max-width:1300px) 50vw, 1200px" formats={["webp"]} quality={82} />
+                      <span class="rail" aria-hidden="true"><b></b></span>
+                    </>
+                  ) : (
+                    <div class="ph"><b>{p.name}</b><span>Screenshot volgt</span></div>
+                  )}
+                </div>
+              </div>
+              <div class="wk-cap"><h3>{p.name}</h3><a class="go" href={p.website} target="_blank" rel="noopener">Bekijk website <span aria-hidden="true">↗</span></a></div>
+              <p class="mono">{p.services}</p>
+            </article>
+          </li>
+        );
+      })}
+    </ul>
+    <blockquote class="quote" data-rv>
+      <p>“Bart heeft verstand van zaken en werkt nauwkeurig. Na een eerste meeting heeft Bart onze wensen in kaart gebracht, en vervolgens bovenverwachting uitgevoerd.”</p>
+      <footer><b>Patrick v.d. Berg</b><span class="mono">StuRents</span></footer>
+    </blockquote>
+  </div>
+</section>

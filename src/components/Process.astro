@@ -1,0 +1,47 @@
+---
+import { getContent } from "../data/cms.js";
+import { svg } from "../data/illustrations.js";
+const { steps } = await getContent();
+---
+<section id="werkwijze" class="on-brand sheet sheet-end" data-sec>
+  <div class="wrap sec">
+    <div class="shead">
+      <p class="mono chap"><i></i>02 / Zo ga ik te werk</p>
+      <h2>Vijf stappen. Eén aanspreekpunt.</h2>
+      <p class="lede">Bij elke stap zie je wat jij aanlevert, wat ik doe en wat het oplevert. Slim bouwen betekent ook dat je de website later zelf makkelijk bijhoudt.</p>
+    </div>
+    <div class="proc" id="proc">
+      <div class="pp" aria-hidden="true">
+        <div class="pp-top"><span class="pp-n"><b id="ppn">01</b> / 05</span><span class="pp-n">Stap</span></div>
+        <div class="pp-vis vis" id="ppvis" set:html={steps.map((s, i) => svg(i, i === 0 ? "on" : "", s.title)).join("")} />
+        <div class="pp-title" id="ppt">{steps[0].title}</div>
+        <div class="pp-bar" id="ppbar"><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+      <ol class="psteps" id="psteps">
+        <li class="pline" aria-hidden="true"><i></i></li>
+        {steps.map((s, i) => (
+          <>
+            <li class:list={["pstep", { on: i === 0 }]} data-i={i}>
+              <span class="pstep-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+              <div class="pstep-b">
+                <h3>{s.title}</h3>
+                <Fragment set:html={svg(i, "vis vis-m", s.title)} />
+                <dl class="px3">
+                  <div><dt>Jij levert aan</dt><dd>{s.clientProvides}</dd></div>
+                  <div><dt>Ik doe</dt><dd>{s.work}</dd></div>
+                  <div><dt>Resultaat</dt><dd>{s.result}</dd></div>
+                </dl>
+              </div>
+            </li>
+            {s.note && (
+              <li class="gate">
+                <span class="gate-dot" aria-hidden="true"></span>
+                <div class="gate-b"><p class="mono" style="color:var(--accent)">{s.note[0]}</p><p>{s.note[1]}</p></div>
+              </li>
+            )}
+          </>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>

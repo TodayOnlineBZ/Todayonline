@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+import bart from "../assets/bart.jpg";
+---
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="mono chap hero-in" style="--dl:0s"><i></i>Websites op maat uit Amsterdam</p>
+        <h1><span class="ln" style="--i:0">De slagkracht van</span><span class="ln" style="--i:1">een bureau.</span><span class="ln" style="--i:2"><em>Gewoon contact met Bart.</em></span></h1>
+        <p class="lede hero-in">Ik bouw websites op maat en zet daar de nieuwste AI-technieken voor in. Jij krijgt de ideeën en het tempo van een groot bureau, met één vast aanspreekpunt dat jouw verhaal kent.</p>
+        <div class="actions hero-in" style="--dl:.45s">
+          <a class="btn btn-primary" href="#contact" data-go="contact">Bespreek je project <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="#werkwijze" data-go="werkwijze">Bekijk hoe ik werk</a>
+        </div>
+      </div>
+      <figure class="hero-fig hero-in" style="--dl:.25s">
+        <div class="ticks"><div class="frame"><Image src={bart} alt="Bart Ziemerink, de persoon achter TodayOnline" widths={[420,840]} sizes="(max-width:900px) 340px, 420px" loading="eager" data-px="0.06" /></div></div>
+        <div class="wire" data-px="-0.05" aria-hidden="true">
+          <svg class="demo" id="herodemo" viewBox="0 0 240 150">
+            <rect class="s" pathLength="1" style="--k:0" x="1" y="1" width="238" height="148" rx="5"/>
+            <path class="s" pathLength="1" style="--k:1" d="M1 20H239"/>
+            <path class="s" pathLength="1" style="--k:2" d="M16 44H120M16 58H96"/>
+            <rect class="s" pathLength="1" style="--k:3" x="140" y="36" width="84" height="66" rx="3"/>
+            <path class="s" pathLength="1" style="--k:4" d="M140 102L224 36M16 118H224M16 132H170"/>
+            <rect class="a" x="16" y="74" width="58" height="18" rx="9"/>
+            <rect class="hs" data-a="sel" data-rest="0" x="136" y="32" width="92" height="74" rx="5"/>
+            <rect class="hs" data-a="ring" data-rest="0" x="12" y="70" width="66" height="26" rx="13"/>
+            <circle class="pulse" r="8" cx="0" cy="0"/><g class="cur"><path d="M0 0V16L4.6 12.2L7.6 18.6L10.2 17.4L7.2 11.2H12.8Z"/></g>
+          </svg>
+        </div>
+        <figcaption class="fig-cap mono"><span>Bart Ziemerink</span><span>TodayOnline</span></figcaption>
+      </figure>
+    </div>
+    <div class="hero-foot hero-in" style="--dl:.6s">
+      <ul class="mono"><li>Amsterdam</li><li>Sinds 2019</li><li>25+ websites en webshops</li></ul>
+      <a class="cue mono" href="#idee" data-go="idee"><i aria-hidden="true"></i>Scroll verder</a>
+    </div>
+  </div>
+</section>

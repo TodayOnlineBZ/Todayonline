@@ -1,0 +1,34 @@
+---
+import "@fontsource-variable/league-spartan";
+import "@fontsource-variable/instrument-sans";
+import "@fontsource-variable/geist-mono";
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import { SITE } from "../data/site.js";
+const { title = SITE.title, description = SITE.description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, SITE.url);
+---
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="nl_NL" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="theme-color" content="#083422" />
+  </head>
+  <body>
+    <Header />
+    <slot />
+    <script>
+      import "../scripts/site.js";
+    </script>
+  </body>
+</html>
