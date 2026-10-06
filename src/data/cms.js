@@ -7,7 +7,7 @@ export const SANITY = { projectId: "iejh710k", dataset: "production", apiVersion
 const QUERY = `{
   "settings": *[_type == "siteSettings"][0]{email, formEmail, phone},
   "steps": *[_type == "processStep"] | order(order asc){title, clientProvides, work, result, noteTitle, noteText},
-  "projects": *[_type == "project"] | order(order asc){name, "slug": slug.current, services, website,
+  "projects": *[_type == "project"] | order(order asc){name, "slug": coalesce(imageKey, slug.current), services, website,
     "shot": screenshot.asset->{url, "w": metadata.dimensions.width, "h": metadata.dimensions.height},
     "mobileShot": mobileScreenshot.asset->{url, "w": metadata.dimensions.width, "h": metadata.dimensions.height}},
   "tools": *[_type == "tool"] | order(order asc){name, usage}
