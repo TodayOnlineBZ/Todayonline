@@ -157,7 +157,7 @@ var demos=[], syncDemos=function(){};
   function place(p){
     var vw=p.view.clientWidth, vh=p.view.clientHeight, ih=p.img.offsetHeight, dist=Math.max(0,ih-vh);
     if(dist<2){p.img.style.transform="none"; if(p.thumb){p.thumb.parentNode.hidden=true;} return;}
-    var leg=dist/(vw*PREVIEW.speed), P=PREVIEW.pause, cyc=2*(leg+P), t=p.t%cyc, a=Math.min(0.2,1.2/leg), f;
+    var leg=Math.min(dist/(vw*PREVIEW.speed),PREVIEW.maxLeg||1e9), P=PREVIEW.pause, cyc=2*(leg+P), t=p.t%cyc, a=Math.min(0.2,1.2/leg), f;
     if(t<P){f=0;}else if(t<P+leg){f=ease((t-P)/leg,a);}else if(t<2*P+leg){f=1;}else{f=1-ease((t-2*P-leg)/leg,a);}
     p.img.style.transform="translate3d(0,"+(-dist*f).toFixed(2)+"px,0)";
     if(p.thumb){var th=Math.max(8,vh/ih*100); p.thumb.style.height=th+"%"; p.thumb.style.top=((100-th)*f)+"%";}

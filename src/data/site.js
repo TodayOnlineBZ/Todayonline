@@ -87,5 +87,8 @@ export const TOOLS = [
   }
 ];
 
-/* Previews: snelheid in framebreedtes per seconde; pauze in seconden boven en onder */
-export const PREVIEW = {speed:0.045, pause:1.8};
+/* Previews van projecten:
+   speed   = scrollsnelheid in framebreedtes per seconde (hoger is sneller)
+   maxLeg  = langste tijd in seconden om van boven naar beneden te scrollen; een heel lange pagina gaat daardoor vanzelf sneller
+   pause   = pauze in seconden boven en onder */
+export const PREVIEW = {speed:0.08, maxLeg:35, pause:1.8};
