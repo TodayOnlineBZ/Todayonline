@@ -37,7 +37,7 @@ export const WORK = [
 /* Tools: logo's staan als masker in public/tools/. width = weergavebreedte in px, ratio = oorspronkelijke verhouding */
 export const TOOLS = [
   {
-    "name": "Claude",
+    "name": "Floris",
     "use": "AI voor ideeën, tekst en code",
     "file": "/tools/claude.png",
     "width": 51,
