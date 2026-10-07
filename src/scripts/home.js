@@ -177,10 +177,36 @@ var demos=[], syncDemos=function(){};
   window.addEventListener("resize",function(){items.forEach(function(p){if(!p.fixed){place(p);}});});
 })();
 
-/* ============ Reviews: schuiven alleen wanneer ze in beeld zijn ============ */
+/* ============ Reviews: schuiven langzaam vanzelf, en je kunt zelf vegen, slepen of scrollen ============ */
 (function(){
-  var rv=$("reviews"); if(!rv||reduce||!("IntersectionObserver" in window)){return;}
-  new IntersectionObserver(function(es){es.forEach(function(e){rv.classList.toggle("run",e.isIntersecting);});},{threshold:0.1}).observe(rv);
+  var rv=$("reviews"); if(!rv){return;}
+  var view=rv.querySelector(".rv-view"), group=rv.querySelector(".rv-group");
+  if(reduce||!("IntersectionObserver" in window)){return;}  /* dan blijft het een gewone rij die je zelf scrolt */
+  var SPEED=24, RESUME=2500;       /* pixels per seconde; wachttijd in ms na eigen scrollen */
+  var pos=0, vis=false, hover=false, holdUntil=0, last=0, running=false, own=false;
+  function half(){return group.offsetWidth;}
+  function hold(){holdUntil=performance.now()+RESUME;}
+  ["touchstart","touchmove","pointerdown","wheel","keydown"].forEach(function(ev){view.addEventListener(ev,hold,{passive:true});});
+  view.addEventListener("pointerenter",function(e){if(e.pointerType==="mouse"){hover=true;}});
+  view.addEventListener("pointerleave",function(){hover=false;});
+  view.addEventListener("scroll",function(){
+    if(own){own=false;return;}     /* onze eigen stap */
+    hold();
+    var h=half(); if(view.scrollLeft>=h){own=true;view.scrollLeft-=h;}   /* eindeloos doorlopen, ook bij zelf vegen */
+    pos=view.scrollLeft;
+  },{passive:true});
+  function loop(now){
+    var dt=Math.min(0.1,(now-last)/1000); last=now;
+    if(vis&&!hover&&now>holdUntil){
+      pos+=SPEED*dt; var h=half(); if(pos>=h){pos-=h;}
+      own=true; view.scrollLeft=pos;
+    }
+    if(vis){requestAnimationFrame(loop);}else{running=false;}
+  }
+  new IntersectionObserver(function(es){es.forEach(function(e){
+    vis=e.isIntersecting;
+    if(vis&&!running){running=true;last=performance.now();pos=view.scrollLeft;requestAnimationFrame(loop);}
+  });},{threshold:0.1}).observe(rv);
 })();
 
 /* ============ Formulier: controleert de invoer en opent het bericht in het mailprogramma van de bezoeker ============ */
