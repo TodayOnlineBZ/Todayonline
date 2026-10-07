@@ -58,11 +58,11 @@ export const TOOLS = [
     "ratio": "256/250"
   },
   {
-    "name": "Cloudflare",
+    "name": "Vercel",
     "use": "Hosting en livegang",
-    "file": "/tools/cloudflare.png",
-    "width": 67,
-    "ratio": "1366/618"
+    "file": "/tools/vercel.png",
+    "width": 114,
+    "ratio": "2035/407"
   },
   {
     "name": "Shopify",

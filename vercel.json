@@ -1,0 +1,24 @@
+{
+  "redirects": [
+    {
+      "source": "/websites/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/werk/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/over/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/contact/:path*",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
+}

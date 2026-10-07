@@ -30,7 +30,7 @@ De site komt in `dist/`.
 - `src/components/`: één bestand per sectie van de pagina.
 - `src/assets/work/`: screenshots van projecten. Bestandsnaam `<naam>-desktop.jpg`; een lange screenshot scrolt vanzelf.
 - `public/tools/`: de toollogo's als masker.
-- `public/_redirects`: doorverwijzingen van de oude WordPress-adressen.
+- `public/_redirects` (Cloudflare) en `vercel.json` (Vercel): doorverwijzingen van de oude WordPress-adressen.
 - `src/pages/privacy.astro` en `disclaimer.astro`: tekst nog overzetten.
 
 ## Sanity (inhoud beheren)
