@@ -359,3 +359,5 @@ section[id]{scroll-margin-top:calc(var(--hdr) + 8px)}
 .legal h2{font-size:var(--t-h3);margin-top:1em}
 .legal .prose{display:grid;gap:1.1em}
 .notice{padding:16px 18px;border:1px dashed var(--accent);border-radius:8px}
+.legal .dash{display:grid;gap:.4em;padding-left:1.2em;list-style:disc}
+.legal .prose a{overflow-wrap:anywhere}
