@@ -7,7 +7,7 @@ export const SITE = {
   mail: "hello@todayonline.nl",
   formMail: "bart@todayonline.nl",
   /* Web3Forms access key. Leeg = het formulier opent het mailprogramma van de bezoeker. */
-  formKey: "",   /* hier komt het bericht uit het formulier terecht */
+  formKey: "37c4e512-df84-4d14-b1a6-a7def7a26cef",   /* hier komt het bericht uit het formulier terecht */
   tel: "+31 6 345 40 298",
   socials: [
     ["Instagram", "https://www.instagram.com/todayonline.nl/"],
