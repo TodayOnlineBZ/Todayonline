@@ -183,23 +183,23 @@ var demos=[], syncDemos=function(){};
   var view=rv.querySelector(".rv-view"), group=rv.querySelector(".rv-group");
   if(reduce||!("IntersectionObserver" in window)){return;}  /* dan blijft het een gewone rij die je zelf scrolt */
   var SPEED=24, RESUME=2500;       /* pixels per seconde; wachttijd in ms na eigen scrollen */
-  var pos=0, vis=false, hover=false, holdUntil=0, last=0, running=false, own=false;
+  var pos=0, vis=false, hover=false, holdUntil=0, last=0, running=false;
   function half(){return group.offsetWidth;}
   function hold(){holdUntil=performance.now()+RESUME;}
   ["touchstart","touchmove","pointerdown","wheel","keydown"].forEach(function(ev){view.addEventListener(ev,hold,{passive:true});});
   view.addEventListener("pointerenter",function(e){if(e.pointerType==="mouse"){hover=true;}});
   view.addEventListener("pointerleave",function(){hover=false;});
   view.addEventListener("scroll",function(){
-    if(own){own=false;return;}     /* onze eigen stap */
+    if(Math.abs(view.scrollLeft-pos)<2){return;}   /* onze eigen stap */
     hold();
-    var h=half(); if(view.scrollLeft>=h){own=true;view.scrollLeft-=h;}   /* eindeloos doorlopen, ook bij zelf vegen */
+    var h=half(); if(view.scrollLeft>=h){view.scrollLeft-=h;}   /* eindeloos doorlopen, ook bij zelf vegen */
     pos=view.scrollLeft;
   },{passive:true});
   function loop(now){
     var dt=Math.min(0.1,(now-last)/1000); last=now;
     if(vis&&!hover&&now>holdUntil){
       pos+=SPEED*dt; var h=half(); if(pos>=h){pos-=h;}
-      own=true; view.scrollLeft=pos;
+      view.scrollLeft=pos;
     }
     if(vis){requestAnimationFrame(loop);}else{running=false;}
   }
