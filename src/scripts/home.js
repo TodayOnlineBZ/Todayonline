@@ -200,9 +200,27 @@ var demos=[], syncDemos=function(){};
     var bad=Object.keys(rules).filter(function(id){return !check(id);}), out=$("fresult");
     if(bad.length){out.innerHTML="";$(bad[0]).focus();return;}
     var txt="Naam: "+$("f-naam").value.trim()+"\nE-mail: "+$("f-mail").value.trim()+"\n\n"+$("f-idee").value.trim();
-    out.innerHTML='<div class="result"><p><b>Je bericht staat klaar in je mailprogramma.</b> Verstuur het daar. Opent er niets? Kopieer je bericht en mail het naar <span style="user-select:all">'+to+'</span>.</p><pre id="fmsg"></pre><div class="actions"><button class="cbtn" type="button" id="fcopy">Kopieer bericht</button></div></div>';
-    $("fmsg").textContent=txt;
-    $("fcopy").addEventListener("click",function(){copyText(txt,this);});
-    window.location.href="mailto:"+to+"?subject="+encodeURIComponent("Nieuw project via todayonline.nl")+"&body="+encodeURIComponent(txt);
+    var key=f.getAttribute("data-key"), btn=f.querySelector('button[type="submit"]');
+    function fallback(lead){
+      out.innerHTML='<div class="result"><p><b>'+lead+'</b> Kopieer je bericht en mail het naar <span style="user-select:all">'+to+'</span>.</p><pre id="fmsg"></pre><div class="actions"><button class="cbtn" type="button" id="fcopy">Kopieer bericht</button></div></div>';
+      $("fmsg").textContent=txt;
+      $("fcopy").addEventListener("click",function(){copyText(txt,this);});
+    }
+    if(!key){
+      fallback("Je bericht staat klaar in je mailprogramma. Opent er niets?");
+      window.location.href="mailto:"+to+"?subject="+encodeURIComponent("Nieuw project via todayonline.nl")+"&body="+encodeURIComponent(txt);
+      return;
+    }
+    if($("f-bot").checked){return;}  /* onzichtbaar veld: alleen bots vinken dit aan */
+    btn.disabled=true; out.innerHTML='<p class="hint">Bezig met versturen…</p>';
+    fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},
+      body:JSON.stringify({access_key:key,subject:"Nieuw project via todayonline.nl",from_name:"TodayOnline website",name:$("f-naam").value.trim(),email:$("f-mail").value.trim(),message:$("f-idee").value.trim()})})
+      .then(function(r){return r.json().then(function(j){return r.ok&&j.success;});})
+      .then(function(ok){
+        btn.disabled=false;
+        if(ok){f.reset();out.innerHTML='<div class="result"><p><b>Verzonden.</b> Bedankt voor je bericht. Ik neem zo snel mogelijk contact met je op.</p></div>';}
+        else{fallback("Versturen is niet gelukt.");}
+      })
+      .catch(function(){btn.disabled=false;fallback("Versturen is niet gelukt.");});
   });
 })();

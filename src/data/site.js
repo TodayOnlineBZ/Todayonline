@@ -5,7 +5,9 @@ export const SITE = {
   title: "TodayOnline | Websites op maat uit Amsterdam",
   description: "Websites op maat uit Amsterdam. De slagkracht van een bureau, gewoon contact met Bart Ziemerink.",
   mail: "hello@todayonline.nl",
-  formMail: "bart@todayonline.nl",   /* hier komt het bericht uit het formulier terecht */
+  formMail: "bart@todayonline.nl",
+  /* Web3Forms access key. Leeg = het formulier opent het mailprogramma van de bezoeker. */
+  formKey: "",   /* hier komt het bericht uit het formulier terecht */
   tel: "+31 6 345 40 298",
   socials: [
     ["Instagram", "https://www.instagram.com/todayonline.nl/"],

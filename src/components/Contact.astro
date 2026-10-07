@@ -1,6 +1,8 @@
 ---
 import { getContent } from "../data/cms.js";
+import { SITE } from "../data/site.js";
 const { settings } = await getContent();
+const direct = Boolean(SITE.formKey);
 import Footer from "./Footer.astro";
 ---
 <section id="contact" class="on-brand sheet contact" data-sec>
@@ -16,15 +18,16 @@ import Footer from "./Footer.astro";
         </div>
         <p class="muted">Afspreken kan bij jou, telefonisch of in Amsterdam.</p>
       </div>
-      <form class="cform" id="cform" data-to={settings.formEmail} novalidate>
+      <form class="cform" id="cform" data-to={settings.formEmail} data-key={SITE.formKey} novalidate>
         <h3>Deel je idee</h3>
-        <p class="fnote"><b>Zo werkt het</b><span>Je bericht opent in je eigen mailprogramma. Daar verstuur je het.</span></p>
+        {!direct && <p class="fnote"><b>Zo werkt het</b><span>Je bericht opent in je eigen mailprogramma. Daar verstuur je het.</span></p>}
+        <input type="checkbox" name="botcheck" id="f-bot" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
         <div class="frow">
           <div class="fld"><label for="f-naam">Naam</label><input id="f-naam" type="text" autocomplete="name" required aria-describedby="e-naam"><p class="err" id="e-naam" aria-live="polite"></p></div>
           <div class="fld"><label for="f-mail">E-mailadres</label><input id="f-mail" type="email" autocomplete="email" required aria-describedby="e-mail"><p class="err" id="e-mail" aria-live="polite"></p></div>
         </div>
         <div class="fld"><label for="f-idee">Wat zie je voor je?</label><p class="hint" id="h-idee">Een paar zinnen over je bedrijf en je wensen is genoeg.</p><textarea id="f-idee" required aria-describedby="h-idee e-idee"></textarea><p class="err" id="e-idee" aria-live="polite"></p></div>
-        <div class="actions"><button class="btn btn-primary" type="submit">Open in mijn mail <span class="arr" aria-hidden="true">→</span></button></div>
+        <div class="actions"><button class="btn btn-primary" type="submit">{direct ? "Verstuur" : "Open in mijn mail"} <span class="arr" aria-hidden="true">→</span></button></div>
         <div id="fresult" role="status" aria-live="polite"></div>
       </form>
     </div>
