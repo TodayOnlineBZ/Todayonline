@@ -94,3 +94,15 @@ export const TOOLS = [
    maxLeg  = langste tijd in seconden om van boven naar beneden te scrollen; een heel lange pagina gaat daardoor vanzelf sneller
    pause   = pauze in seconden boven en onder */
 export const PREVIEW = {speed:0.08, maxLeg:35, pause:1.8};
+
+/* Reviews: photo = bestandsnaam in src/assets/reviews/<photo>.png. Zonder foto verschijnen de initialen. */
+export const REVIEWS = [
+  {name:"Sabine Bossink", org:"Pedicurepraktijk N°50", photo:"sabine-bossink",
+   text:"Een hele fijne manier van werken met heel veel enthousiasme. Kort mijn wensen aan Bart verteld en eigelijk was de conceptversie al bijna goed. Elke keer als ik iets aangepast wilde hebben werd dit ook snel gedaan. Bart denkt goed met je mee. Voor iedereen die een web-site wil maken zou ik Bart zeker aanbevelen!"},
+  {name:"Sjors van den Hoogen", org:"Belanesia Teamwear", photo:"sjors-van-den-hoogen",
+   text:"Bart heeft me meerdere keren perfect geholpen. Van one-pagers tot uitgebreide websites, hij denkt van a tot z mee, en komt met creatieve oplossingen die bovenal nuttig zijn. Ik kom zeker terug als ik nog eens wat nodig heb."},
+  {name:"Erik Jan Souhoka", org:"Stichting Oekraïne Express", photo:"erik-jan-souhoka",
+   text:"Bart van TodayOnline heeft de website voor onze stichting ontworpen, en we zijn ontzettend tevreden met het resultaat. Hij heeft goed geluisterd naar onze wensen en wist op basis van onze schetsen precies te realiseren wat we voor ogen hadden. Tijdens het hele ontwerpproces en zelfs daarna begeleidde hij ons uitstekend met zijn expertise en creatieve ideeën. 100% aan te raden!"},
+  {name:"Patrick v.d. Berg", org:"StuRents", photo:"",
+   text:"Bart heeft verstand van zaken en werkt nauwkeurig. Na een eerste meeting heeft Bart onze wensen in kaart gebracht, en vervolgens bovenverwachting uitgevoerd."}
+];

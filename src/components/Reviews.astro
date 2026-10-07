@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+import { REVIEWS } from "../data/site.js";
+const photos = import.meta.glob("../assets/reviews/*.{png,jpg,jpeg,webp}", { eager: true });
+const photo = (key) => key && (photos[`../assets/reviews/${key}.png`] || photos[`../assets/reviews/${key}.jpg`])?.default;
+const initials = (name) => name.split(" ").filter((w) => /^[A-Z]/.test(w)).map((w) => w[0]).slice(0, 2).join("");
+---
+<div class="reviews" id="reviews">
+  <p class="mono chap" style="margin-bottom:24px"><i></i>Wat klanten zeggen</p>
+  <div class="rv-view" tabindex="0" aria-label="Reviews van klanten">
+    <div class="rv-track">
+      {[0, 1].map((copy) => (
+        <ul class="rv-group" aria-hidden={copy === 1 ? "true" : undefined}>
+          {REVIEWS.map((r) => (
+            <li class="rv-card">
+              <p>“{r.text}”</p>
+              <footer>
+                {photo(r.photo)
+                  ? <Image class="rv-av" src={photo(r.photo)} alt="" width={72} height={72} loading="lazy" />
+                  : <span class="rv-av rv-ini" aria-hidden="true">{initials(r.name)}</span>}
+                <span><b>{r.name}</b><span class="mono">{r.org}</span></span>
+              </footer>
+            </li>
+          ))}
+        </ul>
+      ))}
+    </div>
+  </div>
+</div>

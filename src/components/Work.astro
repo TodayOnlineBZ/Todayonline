@@ -1,6 +1,7 @@
 ---
 import { Picture } from "astro:assets";
 import { getContent } from "../data/cms.js";
+import Reviews from "./Reviews.astro";
 /* Elke screenshot in src/assets/work/ wordt automatisch gekoppeld op bestandsnaam */
 const shots = import.meta.glob("../assets/work/*.{jpg,jpeg,png,webp}", { eager: true });
 const { projects } = await getContent();
@@ -44,9 +45,6 @@ const { projects } = await getContent();
         );
       })}
     </ul>
-    <blockquote class="quote" data-rv>
-      <p>“Bart heeft verstand van zaken en werkt nauwkeurig. Na een eerste meeting heeft Bart onze wensen in kaart gebracht, en vervolgens bovenverwachting uitgevoerd.”</p>
-      <footer><b>Patrick v.d. Berg</b><span class="mono">StuRents</span></footer>
-    </blockquote>
+    <Reviews />
   </div>
 </section>

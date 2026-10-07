@@ -177,6 +177,12 @@ var demos=[], syncDemos=function(){};
   window.addEventListener("resize",function(){items.forEach(function(p){if(!p.fixed){place(p);}});});
 })();
 
+/* ============ Reviews: schuiven alleen wanneer ze in beeld zijn ============ */
+(function(){
+  var rv=$("reviews"); if(!rv||reduce||!("IntersectionObserver" in window)){return;}
+  new IntersectionObserver(function(es){es.forEach(function(e){rv.classList.toggle("run",e.isIntersecting);});},{threshold:0.1}).observe(rv);
+})();
+
 /* ============ Formulier: controleert de invoer en opent het bericht in het mailprogramma van de bezoeker ============ */
 (function(){
   var f=$("cform"), to=f.getAttribute("data-to");
