@@ -103,6 +103,8 @@ export const REVIEWS = [
    text:"Bart heeft me meerdere keren perfect geholpen. Van one-pagers tot uitgebreide websites, hij denkt van a tot z mee, en komt met creatieve oplossingen die bovenal nuttig zijn. Ik kom zeker terug als ik nog eens wat nodig heb."},
   {name:"Erik Jan Souhoka", org:"Stichting Oekraïne Express", photo:"erik-jan-souhoka",
    text:"Bart van TodayOnline heeft de website voor onze stichting ontworpen, en we zijn ontzettend tevreden met het resultaat. Hij heeft goed geluisterd naar onze wensen en wist op basis van onze schetsen precies te realiseren wat we voor ogen hadden. Tijdens het hele ontwerpproces en zelfs daarna begeleidde hij ons uitstekend met zijn expertise en creatieve ideeën. 100% aan te raden!"},
-  {name:"Patrick v.d. Berg", org:"StuRents", photo:"",
-   text:"Bart heeft verstand van zaken en werkt nauwkeurig. Na een eerste meeting heeft Bart onze wensen in kaart gebracht, en vervolgens bovenverwachting uitgevoerd."}
+  {name:"Patrick v.d. Berg", org:"StuRents", photo:"patrick-van-den-berg",
+   text:"Bart heeft verstand van zaken en werkt nauwkeurig. Na een eerste meeting heeft Bart onze wensen in kaart gebracht, en vervolgens bovenverwachting uitgevoerd."},
+  {name:"Esther Laven", org:"'t Houten Höfke", photo:"esther-laven",
+   text:"Bart is rustig en neemt de tijd om iets uit te leggen. Al mijn vragen of eventuele veranderingen werden ook meteen opgepakt. Positief is zeker de duidelijke en snelle communicatie. En met weinig woorden van mijn kant als leek zijnde begreep hij altijd snel wat ik bedoelde. En natuurlijk zeer tevreden over het eindresultaat!"}
 ];
