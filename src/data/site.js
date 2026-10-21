@@ -11,8 +11,7 @@ export const SITE = {
   tel: "+31 6 345 40 298",
   socials: [
     ["Instagram", "https://www.instagram.com/todayonline.nl/"],
-    ["LinkedIn", "https://www.linkedin.com/company/14781954/"],
-    ["Facebook", "https://www.facebook.com/todayonline.nl"]
+    ["LinkedIn", "https://www.linkedin.com/company/14781954/"]
   ]
 };
 
