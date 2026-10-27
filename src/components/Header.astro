@@ -1,10 +1,11 @@
 ---
 import { Image } from "astro:assets";
 import logo from "../assets/logo.png";
+import logoDark from "../assets/logo-dark.png";
 ---
 <header class="hdr">
   <div class="wrap hdr-in">
-    <a class="logo" href="/" data-go="top" aria-label="TodayOnline, naar boven"><Image src={logo} alt="TodayOnline" widths={[240,480]} sizes="120px" loading="eager" /></a>
+    <a class="logo" href="/" data-go="top" aria-label="TodayOnline, naar boven"><Image class="logo-l" src={logo} alt="TodayOnline" widths={[240,480]} sizes="120px" loading="eager" /><Image class="logo-d" src={logoDark} alt="" aria-hidden="true" widths={[240,480]} sizes="120px" loading="eager" /></a>
     <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu openen"><span></span></button>
     <nav class="nav" id="nav" aria-label="Hoofdnavigatie">
       <a class="nl" href="/#idee" data-go="idee">Jouw idee</a>

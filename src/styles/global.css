@@ -100,6 +100,17 @@ section[id]{scroll-margin-top:calc(var(--hdr) + 8px)}
 .hdr-in{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:var(--hdr)}
 .logo{display:block;flex:none}
 .logo img{display:block;height:24px;width:auto}
+.logo .logo-d{display:none}
+.hdr{transition:background-color .3s ease,border-color .3s ease,color .3s ease}
+/* Donkere modus: bovenaan donker met witte "Today", na scrollen weer licht met het originele logo */
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .hdr:not(.scrolled){--bg:#0B1511;--ink:#E8EFEA;--muted:#9BAEA4;--line:transparent;--line-strong:#3A5146;--heading:#E8EFEA}
+  :root:not([data-theme="light"]) .hdr:not(.scrolled) .logo-l{display:none}
+  :root:not([data-theme="light"]) .hdr:not(.scrolled) .logo-d{display:block}
+}
+:root[data-theme="dark"] .hdr:not(.scrolled){--bg:#0B1511;--ink:#E8EFEA;--muted:#9BAEA4;--line:transparent;--line-strong:#3A5146;--heading:#E8EFEA}
+:root[data-theme="dark"] .hdr:not(.scrolled) .logo-l{display:none}
+:root[data-theme="dark"] .hdr:not(.scrolled) .logo-d{display:block}
 .prog{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--accent);transform-origin:left;transform:scaleX(0)}
 .nav{display:flex;align-items:center;gap:clamp(16px,2.2vw,30px)}
 .nav a.nl{font-weight:500;font-size:.95rem;position:relative;padding-block:6px}

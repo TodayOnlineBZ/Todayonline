@@ -4,6 +4,12 @@ export var $=function(id){return document.getElementById(id);};
 export function all(sel,root){return Array.prototype.slice.call((root||document).querySelectorAll(sel));}
 export function pad(n){return (n<10?"0":"")+n;}
 
+/* Header: na een stukje scrollen krijgt hij de lichte stijl (relevant in donkere modus) */
+var hdr=document.querySelector(".hdr");
+function hdrState(){if(hdr){hdr.classList.toggle("scrolled",window.scrollY>8);}}
+hdrState();
+window.addEventListener("scroll",hdrState,{passive:true});
+
 /* ============ 4. Navigatie ============ */
 var nav=$("nav"), burger=$("burger");
 function closeMenu(){nav.classList.remove("open");burger.setAttribute("aria-expanded","false");burger.setAttribute("aria-label","Menu openen");}
