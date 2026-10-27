@@ -23,6 +23,15 @@ const canonical = new URL(Astro.url.pathname, SITE.url);
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta name="theme-color" content="#083422" />
+    <meta property="og:image" content={new URL("/og-image.jpg", SITE.url).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Bart Ziemerink van TodayOnline" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={new URL("/og-image.jpg", SITE.url).href} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   </head>
   <body>
     <Header />
