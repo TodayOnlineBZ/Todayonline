@@ -31,7 +31,7 @@ export const WORK = [
   {n:"Kinnie Benelux", s:"Webshop", u:"kinnie-benelux.nl", f:"kinnie-benelux"},
   {n:"Reben", s:"Webshop, conversieoptimalisatie", u:"byreben.com", f:"reben"},
   {n:"Albertus Magnus", s:"Web development, technische ondersteuning", u:"albertus.nl", f:"albertus"},
-  {n:"Stichting Oekraïne Express", s:"Website-ontwerp, usability (UX)", u:"stichting-oekraine-express.nl", f:"oekraine-express"},
+  {n:"Buddy Run Noord", s:"Website-ontwerp, development", u:"buddyrun-noord.nl", f:"buddyrun-noord"},
   {n:"Graveyard", s:"Web development, technische ondersteuning", u:"graveyardevents.nl", f:"graveyard"}
 ];
 
