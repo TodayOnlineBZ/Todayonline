@@ -85,7 +85,7 @@ export const TOOLS = [
     "file": "/tools/astro.png",
     "width": 45,
     "ratio": "170/214"
-  ,
+  },
   {
     "name": "Supabase",
     "use": "Database, logins en opslag",
