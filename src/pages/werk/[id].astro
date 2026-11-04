@@ -1,0 +1,75 @@
+---
+import { getImage } from "astro:assets";
+import Base from "../../layouts/Base.astro";
+import Footer from "../../components/Footer.astro";
+import Shot from "../../components/Shot.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { getContent, toolLogo } from "../../data/cms.js";
+import { shotsFor } from "../../data/shots.js";
+
+export async function getStaticPaths() {
+  const { projects } = await getContent();
+  return projects.map((p, i) => ({ params: { id: p.id }, props: { p, others: [1, 2, 3].map((j) => projects[(i + j) % projects.length]).filter((o) => o.id !== p.id) } }));
+}
+const { p, others } = Astro.props;
+const { desktop, mobile } = shotsFor(p);
+const [c1, c2, acc] = p.colors || ["#083422", "#0F4A31", "#FE6F24"];
+const services = (p.services || "").split(",").map((s) => s.trim()).filter(Boolean).map((s) => s[0].toUpperCase() + s.slice(1));
+const paras = (p.about || "").split(/\n\s*\n/).map((s) => s.trim()).filter(Boolean);
+const kind = /webshop/i.test(p.services) ? "Webshop" : "Website";
+const cta = kind === "Webshop" ? "Ook zo'n webshop?" : "Een idee voor jouw website?";
+let og = "/og-image.jpg";
+if (desktop?.remote) og = `${desktop.remote.url}?w=1200&h=630&fit=crop&crop=top&fm=jpg`;
+else if (desktop?.local) og = (await getImage({ src: desktop.local, width: 1200, format: "jpg" })).src;
+const desc = `${p.name}: ${kind.toLowerCase()} van TodayOnline.${p.year ? ` Opgeleverd in ${p.year}.` : ""}${services.length ? ` ${services.join(", ")}.` : ""}`;
+---
+<Base title={`${p.name} | Werk | TodayOnline`} description={desc} image={og} imageAlt={`Screenshot van ${p.host}`} current="werk" bodyClass="proj" bodyStyle={`--p1:${c1};--p2:${c2};--p-accent:${acc}`}>
+  <main>
+    <section class="wrap phero">
+      <p class="mono chap"><i></i><a href="/werk/">Werk</a> / {kind}</p>
+      <h1>{p.name}<em>.</em></h1>
+      <div class="phero-row">
+        <span class="mono phost">{p.host}</span>
+        <a class="btn btn-light" href={p.website} target="_blank" rel="noopener">Bekijk website <span class="arr" aria-hidden="true">↗</span></a>
+      </div>
+      {desktop && (
+        <div class={`stage${mobile ? " has-phone" : ""}`}>
+          <div class="pbrowser"><div class="pbar"><i><b></b></i><span>{p.host}</span></div><div class="pview"><Shot shot={desktop} alt={`De homepage van ${p.host} op desktop`} sizes="(max-width:1300px) 90vw, 1100px" widths={[700, 1100, 1600]} eager /></div></div>
+          {mobile && <div class="pphone"><div><Shot shot={mobile} alt={`${p.host} op een telefoon`} sizes="250px" widths={[240, 480]} eager /></div></div>}
+        </div>
+      )}
+    </section>
+
+    {(p.year || services.length || p.tools?.length) && (
+      <section class="wrap" aria-label="Projectgegevens">
+        <dl class="pfacts">
+          {p.year && <div><dt class="mono">Opgeleverd</dt><dd class="pyear">{p.year}</dd></div>}
+          {services.length > 0 && <div><dt class="mono">Diensten</dt><dd class="pchips">{services.map((s) => <span class="pchip">{s}</span>)}</dd></div>}
+          {p.tools?.length > 0 && <div><dt class="mono">Gebruikte tools</dt><dd class="pchips">{p.tools.map((t) => { const l = toolLogo(t); return l && t.toLowerCase() === "vercel"
+            ? <span class="pchip" aria-label="Vercel"><span class="plogo" aria-hidden="true" style={`aspect-ratio:${l.ratio};-webkit-mask-image:url(${l.file});mask-image:url(${l.file})`}></span></span>
+            : <span class="pchip">{l && <span class="plogo" aria-hidden="true" style={`aspect-ratio:${l.ratio};-webkit-mask-image:url(${l.file});mask-image:url(${l.file})`}></span>}{t}</span>; })}</dd></div>}
+        </dl>
+      </section>
+    )}
+
+    {(p.intro || paras.length > 0) && (
+      <section class="wrap pabout">
+        <div><p class="mono chap"><i></i>Over het project</p>{p.intro && <h2>{p.intro}</h2>}</div>
+        <div>{paras.map((t) => <p>{t}</p>)}</div>
+      </section>
+    )}
+
+    {others.length > 0 && (
+      <section class="wrap pmore">
+        <div class="pmore-head"><div><p class="mono chap"><i></i>Meer werk</p><h2>Andere projecten.</h2></div><a class="plink" href="/werk/">Bekijk al het werk →</a></div>
+        <ul class="pcards">{others.map((o) => <ProjectCard p={o} />)}</ul>
+      </section>
+    )}
+
+    <section class="wrap pcta">
+      <div><h2>{cta}</h2><p>Vertel me wat je voor je ziet. Je schakelt rechtstreeks met mij.</p></div>
+      <a class="btn btn-primary" href="/#contact">Bespreek je project <span class="arr" aria-hidden="true">→</span></a>
+    </section>
+  </main>
+  <Footer />
+</Base>

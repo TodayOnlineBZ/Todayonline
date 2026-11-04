@@ -1,0 +1,13 @@
+---
+import Shot from "./Shot.astro";
+import { shotsFor } from "../data/shots.js";
+const { p, sizes = "(max-width:860px) 100vw, 33vw" } = Astro.props;
+const { desktop } = shotsFor(p);
+---
+<li class="pcard">
+  <a href={`/werk/${p.id}/`}>
+    <div class="pcard-shot">{desktop ? <Shot shot={desktop} alt={`Screenshot van ${p.host}`} sizes={sizes} widths={[500, 800, 1200]} /> : <span class="ph"><b>{p.name}</b></span>}</div>
+    <h3>{p.name}</h3>
+    <p>{p.services}</p>
+  </a>
+</li>

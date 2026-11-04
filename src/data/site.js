@@ -28,11 +28,27 @@ export const STEPS = [
 
 /* Projecten: f = bestandsnaam van de screenshot in src/assets/work/<f>-desktop.jpg (optioneel <f>-mobile.jpg) */
 export const WORK = [
-  {n:"Kinnie Benelux", s:"Webshop", u:"kinnie-benelux.nl", f:"kinnie-benelux"},
-  {n:"Reben", s:"Webshop, conversieoptimalisatie", u:"byreben.com", f:"reben"},
-  {n:"Albertus Magnus", s:"Web development, technische ondersteuning", u:"albertus.nl", f:"albertus"},
-  {n:"Buddy Run Noord", s:"Website-ontwerp, development", u:"buddyrun-noord.nl", f:"buddyrun-noord"},
-  {n:"Graveyard", s:"Web development, technische ondersteuning", u:"graveyardevents.nl", f:"graveyard"}
+  {n:"Kinnie Benelux", s:"Webshop", u:"kinnie-benelux.nl", f:"kinnie-benelux", year:"2026", tools:["Shopify","Claude","ChatGPT"],
+   intro:"Mediterraans gevoel, makkelijk bestellen.", colors:["#2A0B0E","#7A2A10","#FE8A2A"],
+   about:"Kinnie is de bittere sinaasappelfrisdrank uit Malta, sinds 1952. Voor Kinnie Benelux bouwde ik een webshop om Kinnie in Nederland en België te verkopen.\n\nJe kiest snel tussen Classic, Zero en Zest, stelt zelf een bundel samen en ziet direct wat je bespaart. Sfeerbeelden van Malta geven de shop het zonnige gevoel van het merk."},
+  {n:"Reben", s:"Webshop, technische ondersteuning", u:"byreben.com", f:"reben", year:"2024", tools:["Shopify","ChatGPT"],
+   intro:"Een eigenzinnig product, helder gepresenteerd.", colors:["#310114","#6B0635","#D58FB4"],
+   about:"Reben maakt rabarberlikeur en een Rhubarb Spritz met een kwart van de suiker van een klassieke spritz. Zo'n bijzonder product vraagt om een webshop die het verhaal en de beelden de ruimte geeft.\n\nIk bouwde de webshop in Shopify, met grote sfeerbeelden, een rustige productpresentatie en een duidelijke route naar bestellen. Met de store locator vind je snel waar Reben te koop is.\n\nDaarna bleef ik betrokken voor technische ondersteuning, zodat de webshop meegroeit met nieuwe producten en samenwerkingen."},
+  {n:"Albertus Magnus", s:"Web development, technische ondersteuning", u:"albertus.nl", f:"albertus", year:"2023", tools:["WordPress","Elementor"],
+   intro:"Een vereniging met geschiedenis, online overzichtelijk.", colors:["#0B2A16","#1F5A2E","#D4A72C"],
+   about:"R.K.S.V. Albertus Magnus is sinds 1896 een algemene studentenvereniging in Groningen. De website brengt nieuws, de vereniging, senioren en zakelijke partners bij elkaar.\n\nIk werkte mee aan de ontwikkeling van de site en verzorg technische ondersteuning, zodat de vereniging de website goed kan blijven gebruiken."},
+  {n:"Buddy Run Noord", s:"Website-ontwerp, development", u:"buddyrun-noord.nl", f:"buddyrun-noord", year:"2026", tools:["Astro","Vercel","GitHub","Claude","ChatGPT"],
+   intro:"Samen over de finish, ook online.", colors:["#00243B","#00446D","#FD881E"],
+   about:"Buddy Run Noord is een obstakelrun in Groningen voor mensen met een verstandelijke beperking en hun buddy's. De nieuwe website laat meteen voelen waar de dag om draait.\n\nVeel ruimte voor foto's van eerdere edities, en een duidelijke route om mee te doen, vrijwilliger te worden of te sponsoren. Op desktop en mobiel."},
+  {n:"Graveyard", s:"Web development, technische ondersteuning", u:"graveyardevents.nl", f:"graveyard", year:"2024", tools:["WordPress","Elementor"],
+   intro:"Een eventsite met de juiste sfeer.", colors:["#08090A","#2A0B0D","#E8262C"],
+   about:"Graveyard organiseert events in Patronaat, Haarlem. De website zet de edities, data en tickets op een donkere, sfeervolle pagina.\n\nIk werkte aan de ontwikkeling van de site en verzorg technische ondersteuning."}
+];
+
+/* Extra logo's die alleen op projectpagina's verschijnen, niet bij "Slimme tools" op de homepage */
+export const EXTRA_LOGOS = [
+  {"name": "WordPress", "file": "/tools/wordpress.png", "ratio": "200/200"},
+  {"name": "Elementor", "file": "/tools/elementor.png", "ratio": "200/200"}
 ];
 
 /* Tools: logo's staan als masker in public/tools/. width = weergavebreedte in px, ratio = oorspronkelijke verhouding */

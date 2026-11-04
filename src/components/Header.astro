@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import logo from "../assets/logo.png";
 import logoDark from "../assets/logo-dark.png";
+const { current = "" } = Astro.props;
 ---
 <header class="hdr">
   <div class="wrap hdr-in">
@@ -10,7 +11,7 @@ import logoDark from "../assets/logo-dark.png";
     <nav class="nav" id="nav" aria-label="Hoofdnavigatie">
       <a class="nl" href="/#idee" data-go="idee">Jouw idee</a>
       <a class="nl" href="/#werkwijze" data-go="werkwijze">Werkwijze</a>
-      <a class="nl" href="/#werk" data-go="werk">Werk</a>
+      <a class={`nl${current === "werk" ? " on" : ""}`} href="/werk/" aria-current={current === "werk" ? "page" : undefined}>Werk</a>
       <a class="nl" href="/#bart" data-go="bart">Over Bart</a>
       <a class="btn btn-primary" href="/#contact" data-go="contact">Bespreek je project <span class="arr" aria-hidden="true">→</span></a>
     </nav>

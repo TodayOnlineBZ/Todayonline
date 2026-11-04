@@ -1,0 +1,26 @@
+---
+import Base from "../../layouts/Base.astro";
+import Footer from "../../components/Footer.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { getContent } from "../../data/cms.js";
+const { projects } = await getContent();
+---
+<Base title="Werk | TodayOnline" description="Websites en webshops die ik heb gemaakt, met per project de aanpak, de diensten en de gebruikte tools." current="werk">
+  <main>
+    <section class="wrap ov-head">
+      <p class="mono chap"><i></i>Werk</p>
+      <h1>Websites die zo zijn ontstaan.</h1>
+      <p class="lede">Websites en webshops die ik heb gemaakt. Open een project voor meer over de aanpak, de diensten en de gebruikte tools.</p>
+    </section>
+    <section class="wrap ov-list" aria-label="Alle projecten">
+      <ul class="pcards two">{projects.map((p) => <ProjectCard p={p} sizes="(max-width:860px) 100vw, 50vw" />)}</ul>
+    </section>
+    <section class="on-brand ov-cta">
+      <div class="wrap">
+        <div><h2>Een idee voor jouw website?</h2><p>Vertel me wat je voor je ziet. Je schakelt rechtstreeks met mij.</p></div>
+        <a class="btn btn-primary" href="/#contact">Bespreek je project <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>

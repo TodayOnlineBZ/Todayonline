@@ -38,13 +38,14 @@ const { projects } = await getContent();
                   )}
                 </div>
               </div>
-              <div class="wk-cap"><h3>{p.name}</h3><a class="go" href={p.website} target="_blank" rel="noopener">Bekijk website <span aria-hidden="true">↗</span></a></div>
+              <div class="wk-cap"><h3><a href={`/werk/${p.id}/`}>{p.name}</a></h3><span class="wk-links"><a class="go" href={`/werk/${p.id}/`}>Over dit project <span aria-hidden="true">→</span></a><a class="go" href={p.website} target="_blank" rel="noopener">Bekijk website <span aria-hidden="true">↗</span></a></span></div>
               <p class="mono">{p.services}</p>
             </article>
           </li>
         );
       })}
     </ul>
+    <p class="work-all"><a class="btn btn-ghost" href="/werk/">Bekijk al het werk <span class="arr" aria-hidden="true">→</span></a></p>
     <Reviews />
   </div>
 </section>

@@ -1,0 +1,10 @@
+---
+/* Eén screenshot, uit Sanity of uit de code. fit = "cover" vult het kader vanaf de bovenkant */
+import { Picture } from "astro:assets";
+const { shot, alt, sizes = "100vw", widths = [600, 1000, 1600], eager = false } = Astro.props;
+---
+{shot?.remote ? (
+  <img src={`${shot.remote.url}?w=${widths[1]}&auto=format&q=82`} srcset={widths.map((w) => `${shot.remote.url}?w=${w}&auto=format&q=82 ${w}w`).join(", ")} sizes={sizes} width={shot.remote.w} height={shot.remote.h} alt={alt} loading={eager ? "eager" : "lazy"} decoding="async" />
+) : shot?.local ? (
+  <Picture src={shot.local} alt={alt} widths={widths.filter((w) => w <= shot.local.width)} sizes={sizes} formats={["webp"]} quality={82} loading={eager ? "eager" : "lazy"} />
+) : null}
